@@ -1,4 +1,4 @@
-# Polynomial‑Time
+<!--# Polynomial‑Time
 
 **Explanation of Polynomial Time Complexity (O(nᵏ))**
 
@@ -160,3 +160,150 @@ if __name__ == "__main__":
     run_comparison()
 ```
 
+-->
+
+
+<!-- # 📘 Polynomial Time – README -->
+
+<h1 align="center">Polynomial Time</h1>
+
+## Overview
+
+**Polynomial Time** refers to an algorithm whose runtime grows as a polynomial function of the input size.
+
+If the input size is **n**, the runtime is proportional to nᵏ, where k is a constant.
+
+In algorithm analysis, this is written as:
+
+```
+O(nᵏ)
+```
+
+Polynomial time algorithms are **tractable** and generally considered efficient for practical input sizes.
+
+<a href="/src/main.py">Check out for source code</a>
+
+---
+
+## ⚙️ What Polynomial Time Means
+
+An algorithm runs in polynomial time when its running time can be expressed as n², n³, n⁴, etc.
+
+Common examples:
+
+* Bubble Sort → O(n²)
+* Matrix Multiplication → O(n³)
+* Checking all pairs in an array → O(n²)
+* Certain graph algorithms (like Floyd-Warshall) → O(n³)
+
+Polynomial time is significantly slower than linear or logarithmic time for high powers but much faster than exponential time.
+
+---
+
+## 🧠 Python Examples
+
+### Example 1 — Matrix Multiplication (O(n³))
+
+```python id="poly_matrix1"
+def matrix_multiply(A, B):
+    n = len(A)
+    C = [[0]*n for _ in range(n)]
+    
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                C[i][j] += A[i][k] * B[k][j]
+    return C
+
+A = [[1, 2], [3, 4]]
+B = [[5, 6], [7, 8]]
+print(matrix_multiply(A, B))
+```
+
+Three nested loops → O(n³).
+
+---
+
+### Example 2 — Checking All Pairs in an Array (O(n²))
+
+```python id="poly_pairs2"
+def all_pairs_sum(arr):
+    n = len(arr)
+    result = []
+    for i in range(n):
+        for j in range(i+1, n):
+            result.append((arr[i], arr[j]))
+    return result
+
+arr = [1, 2, 3]
+print(all_pairs_sum(arr))  # Output: [(1,2),(1,3),(2,3)]
+```
+
+Two nested loops → O(n²).
+
+---
+
+### Example 3 — Bubble Sort (O(n²))
+
+```python id="poly_bubble3"
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+
+numbers = [64, 34, 25, 12, 22, 11, 90]
+print(bubble_sort(numbers))
+```
+
+Nested iterations → O(n²), a polynomial runtime.
+
+---
+
+## ⏱️ Time Complexity Comparison
+
+| Complexity | Meaning           |
+| ---------- | ----------------- |
+| O(1)       | Constant time     |
+| O(log n)   | Logarithmic time  |
+| O(n)       | Linear time       |
+| O(n log n) | Linearithmic time |
+| **O(nᵏ)**  | Polynomial time   |
+| O(2ⁿ)      | Exponential time  |
+
+Polynomial time algorithms are generally considered efficient for computation.
+
+---
+
+## 👍 Advantages
+
+* Tractable and efficient for reasonable input sizes
+* Predictable runtime
+* Includes many practical algorithms for sorting, graphs, and matrices
+* Always faster than exponential or factorial time
+
+## 👎 Disadvantages
+
+* Can become slow for large inputs when k is high
+* Nested loops can make O(n³), O(n⁴), etc., impractical for big datasets
+* Not always optimal compared to specialized algorithms
+
+---
+
+## 📌 When Polynomial Time Occurs
+
+Polynomial time operations appear in:
+
+* Nested loops (O(n²), O(n³))
+* Matrix operations
+* Graph algorithms (like shortest paths, connectivity)
+* Sorting algorithms (like Bubble Sort, Selection Sort)
+
+---
+
+## 🏁 Summary
+
+Polynomial time complexity O(nᵏ) describes algorithms that scale as a polynomial of input size.
+It includes many common and practical algorithms, balancing efficiency with tractability, and is widely used in real-world computation.
